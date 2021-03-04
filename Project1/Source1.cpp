@@ -1,6 +1,15 @@
-#include <stdio.h>
+#include<iostream>
+using namespace std;
+
+void swap2(int& a, int& b) {
+	int t = a;
+	a = b;
+	b = t;
+}
+
 int main() {
-	printf("Hello world");
-	getchar();
+	int a = 3, b = 4;
+	swap2(a, b);
+	cout << a << "\t" << b << "\n";
 	return 0;
 }
