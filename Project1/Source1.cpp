@@ -9,16 +9,19 @@ void swap2(int& a, int& b) {
 	b = t;
 }
 
+template <typename T>
 struct Point {
-	int x, y;
-	Point(int x = 0,int y = 0):x(x),y(y) {}
+	T x, y;
+	Point(T x = 0,T y = 0):x(x),y(y) {}
 };
 
-Point operator + (const Point& A, const Point& B) {
-	return Point(A.x + B.x, A.y + B.y);
+template <typename T>
+Point<T> operator + (const Point<T>& A, const Point<T>& B) {
+	return Point<T>(A.x + B.x, A.y + B.y);
 }
 
-ostream& operator << (ostream &out, const Point& p) {
+template <typename T>
+ostream& operator << (ostream &out, const Point<T>& p) {
 	out << "(" << p.x << "," << p.y << ")";
 	return out;
 }
@@ -28,9 +31,11 @@ int main() {
 	//swap2(a, b);
 	//cout << a << "\t" << b << "\n";
 
-	Point a, b(1, 2);
+	Point<int> a, b(1, 2);
+	Point<double>c(1.1, 2.2), d(3.3, 4.4);
 	a.x = 3;
-	cout << a + b << "\n";
+	cout << a + b << "\n" << c + d << "\n";
+
 
 	return 0;
 }
